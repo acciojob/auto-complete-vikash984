@@ -20,7 +20,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    let isCancelled = false;
+    let cancelled = false;
 
     if (input.trim() === "") {
       setSuggestions([]);
@@ -28,16 +28,15 @@ const App = () => {
     }
 
     setLoading(true);
-
-    fetchSuggestions(input).then((result) => {
-      if (!isCancelled) {
-        setSuggestions(result);
+    fetchSuggestions(input).then((results) => {
+      if (!cancelled) {
+        setSuggestions(results);
         setLoading(false);
       }
     });
 
     return () => {
-      isCancelled = true;
+      cancelled = true;
     };
   }, [input]);
 
@@ -46,14 +45,14 @@ const App = () => {
       {/* Do not remove the main div */}
       <input
         type="text"
+        placeholder="Search fruits..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Search fruits..."
       />
       {loading && <p>Loading...</p>}
       <ul>
-        {suggestions.map((fruit, idx) => (
-          <li key={idx}>{fruit}</li>
+        {suggestions.map((fruit, index) => (
+          <li key={index}>{fruit}</li>
         ))}
       </ul>
     </div>
