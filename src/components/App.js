@@ -1,5 +1,3 @@
-
-import React from "react";
 import React, { useState, useEffect } from "react";
 import "./../styles/App.css";
 
@@ -17,7 +15,7 @@ const App = () => {
           fruit.toLowerCase().startsWith(query.toLowerCase())
         );
         resolve(result);
-      }, 300); // 300ms delay to simulate async
+      }, 300);
     });
   };
 
