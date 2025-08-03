@@ -45,7 +45,7 @@ const App = () => {
       {/* Do not remove the main div */}
       <input
         type="text"
-        placeholder="Search fruits..."
+        placeholder=""
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
